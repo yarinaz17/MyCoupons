@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainListFragment">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/app_bar"
+            style="@style/Widget.MyCoupons.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/cpn_app_name" />
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:background="@color/secondaryLightColor"
+        android:elevation="2dp"
+        android:paddingStart="@dimen/cpn_product_grid_spacing"
+        android:paddingEnd="@dimen/cpn_product_grid_spacing"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@android:color/white"
+            android:layout_marginTop="16dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/coupon_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="fitCenter"/>
+                <TextView
+                    android:id="@+id/coupon_firm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_gravity="center_horizontal"
+                    android:textAppearance="?attr/textAppearanceHeadline5"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:textColor="@android:color/black"
+                    tools:text="@tools:sample/lorem"/>
+
+                <TextView
+                    android:id="@+id/details_cpn_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center_horizontal"
+                    android:textAppearance="?attr/textAppearanceSubtitle1"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:textColor="@android:color/black"
+                    tools:text="@tools:sample/lorem"/>
+
+                <TextView
+                    android:id="@+id/details_cpn_disclaimer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_gravity="right"
+                    android:textAppearance="?attr/textAppearanceOverline"
+                    android:fontFamily="@font/open_sans_light"
+                    android:textColor="@android:color/black"
+                    tools:text="@tools:sample/lorem"
+                    tools:ignore="RtlHardcoded" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MyCoupons.Button"
+                    android:text="@string/str_back"
+                    android:layout_marginTop="48dp"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>
