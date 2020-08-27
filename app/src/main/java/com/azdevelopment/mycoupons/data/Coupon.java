@@ -1,11 +1,20 @@
 package com.azdevelopment.mycoupons.data;
+import com.google.gson.annotations.SerializedName;
 
 public class Coupon {
+    @SerializedName("id")
+    private String id;
+    @SerializedName("url")
     private String url;
+    @SerializedName("firm")
     private String firm;
-    private String coupon;
+    @SerializedName("image")
+    private String couponImg;
+    @SerializedName("short_description")
     private String short_description;
+    @SerializedName("long_description")
     private String long_description;
+    @SerializedName("disclaimer")
     private String disclaimer;
 
     public Coupon(String url, String firm, String description) {
@@ -14,10 +23,10 @@ public class Coupon {
         this.short_description = description;
     }
 
-    public Coupon(String url, String firm, String coupon, String short_description, String long_description, String disclaimer) {
+    public Coupon(String url, String firm, String couponImg, String short_description, String long_description, String disclaimer) {
         this.url = url;
         this.firm = firm;
-        this.coupon = coupon;
+        this.couponImg = couponImg;
         this.short_description = short_description;
         this.long_description = long_description;
         this.disclaimer = disclaimer;
@@ -31,8 +40,8 @@ public class Coupon {
         return firm;
     }
 
-    public String getCoupon() {
-        return coupon;
+    public String getCouponImg() {
+        return couponImg;
     }
 
     public String getShort_description() {

@@ -8,19 +8,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.azdevelopment.mycoupons.data.Coupon;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.material.card.MaterialCardView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.CouponViewHolder> {
 
-    private List<Coupon> mCouponsList;
+    private List<Coupon> mCouponsList = new ArrayList<Coupon>();
+    private OnCouponClickListener onCouponClickListener;
 
-    public CouponsAdapter(List<Coupon> mCouponsList) {
-        this.mCouponsList = mCouponsList;
+    public CouponsAdapter(){
+
+    }
+
+    public void setDataSet(List<Coupon> dataSet){
+        this.mCouponsList = dataSet;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -41,10 +51,12 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.CouponVi
     }
 
     class CouponViewHolder extends RecyclerView.ViewHolder{
+        private MaterialCardView mCouponItem;
         private TextView mTitle, mDescription;
         private ImageView mImage;
         public CouponViewHolder(@NonNull View itemView) {
             super(itemView);
+            mCouponItem = itemView.findViewById(R.id.coupon_item_mainList);
             mTitle = itemView.findViewById(R.id.cpn_title);
             mDescription = itemView.findViewById(R.id.cpn_description);
             mImage = itemView.findViewById(R.id.cpn_image);
@@ -54,7 +66,16 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.CouponVi
             mTitle.setText(cpn.getFirm());
             mDescription.setText(cpn.getShort_description());
             Glide.with(itemView.getContext()).
-                    load(cpn.getUrl()).into(mImage);
+                    load(cpn.getCouponImg()).
+                    diskCacheStrategy(DiskCacheStrategy.DATA).
+                    into(mImage);
+            mCouponItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                    ((NavigationHost)activity).navigateTo(new CouponDetailsFragment(),true);
+                }
+            });
         }
     }
 }
