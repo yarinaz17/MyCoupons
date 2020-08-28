@@ -1,11 +1,13 @@
 package com.azdevelopment.mycoupons;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements NavigationHost {
     private MainViewModel mainViewModel;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements NavigationHost {
                     .add(R.id.container, new MainListFragment())
                     .commit();
         }
+
     }
 
     /**

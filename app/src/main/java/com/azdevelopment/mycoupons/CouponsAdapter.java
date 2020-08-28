@@ -24,8 +24,8 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.CouponVi
     private List<Coupon> mCouponsList = new ArrayList<Coupon>();
     private OnCouponClickListener onCouponClickListener;
 
-    public CouponsAdapter(){
-
+    public CouponsAdapter(OnCouponClickListener onCouponClickListener){
+        this.onCouponClickListener = onCouponClickListener;
     }
 
     public void setDataSet(List<Coupon> dataSet){
@@ -73,6 +73,7 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.CouponVi
                 @Override
                 public void onClick(View v) {
                     AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                    onCouponClickListener.onCouponClick(cpn);
                     ((NavigationHost)activity).navigateTo(new CouponDetailsFragment(),true);
                 }
             });

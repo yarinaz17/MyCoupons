@@ -45,8 +45,8 @@ public class MainListFragment extends Fragment implements OnCouponClickListener 
     }
 
     @Override
-    public void onCouponClick(String id) {
-
+    public void onCouponClick(Coupon cpn) {
+        mainViewModel.setSelected(cpn);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class MainListFragment extends Fragment implements OnCouponClickListener 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
-        final CouponsAdapter adapter = new CouponsAdapter();
+        final CouponsAdapter adapter = new CouponsAdapter(this);
         recyclerView.setAdapter(adapter);
         int largePadding = getResources().getDimensionPixelSize(R.dimen.grid_spacing_large);
         int smallPadding = getResources().getDimensionPixelSize(R.dimen.grid_spacing_small);
@@ -90,6 +90,7 @@ public class MainListFragment extends Fragment implements OnCouponClickListener 
             activity.setSupportActionBar(toolbar);
         }
     }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
         menuInflater.inflate(R.menu.toolbar_menu, menu);

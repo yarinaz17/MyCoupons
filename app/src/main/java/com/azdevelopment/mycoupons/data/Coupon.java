@@ -32,6 +32,10 @@ public class Coupon {
         this.disclaimer = disclaimer;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getUrl() {
         return url;
     }
@@ -55,4 +59,5 @@ public class Coupon {
     public String getDisclaimer() {
         return disclaimer;
     }
+
 }

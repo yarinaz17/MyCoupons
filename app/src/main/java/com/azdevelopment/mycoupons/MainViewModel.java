@@ -12,9 +12,13 @@ import com.azdevelopment.mycoupons.data.Coupon;
 import com.azdevelopment.mycoupons.data.CouponsHolder;
 import com.azdevelopment.mycoupons.data.CouponsRepo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainViewModel extends ViewModel{
     private MutableLiveData<CouponsHolder> couponHolder;
     private CouponsRepo couponsRepo;
+    private MutableLiveData<Coupon> selected = new MutableLiveData<Coupon>();
     public MainViewModel() {
         couponsRepo = new CouponsRepo();
     }
@@ -26,4 +30,14 @@ public class MainViewModel extends ViewModel{
     public void setCoupons(CouponsHolder holder){
         couponHolder.postValue(holder);
     }
+
+    public MutableLiveData<Coupon> getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Coupon selected) {
+        this.selected.postValue(selected);
+    }
+
+
 }
