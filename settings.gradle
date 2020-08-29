@@ -1,2 +1,3 @@
+include ':imageviewpopup'
 include ':app'
 rootProject.name = "MyCoupons"

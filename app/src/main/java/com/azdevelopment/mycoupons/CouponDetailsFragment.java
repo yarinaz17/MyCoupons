@@ -1,5 +1,6 @@
 package com.azdevelopment.mycoupons;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +76,12 @@ public class CouponDetailsFragment extends Fragment {
                 imagePopup.setBackgroundColor(Color.TRANSPARENT);
                 imagePopup.setHideCloseIcon(true);
                 imagePopup.setImageOnClickClose(true);
+                DisplayMetrics metrics = new DisplayMetrics();
+                ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(metrics);
+                int width = metrics.widthPixels;
+                int height = metrics.heightPixels;
+                imagePopup.setWindowWidth(width);
+                imagePopup.setWindowHeight(height);
                 imagePopup.initiatePopupWithGlide(coupon.getUrl());
                 couponImg.setOnClickListener(new View.OnClickListener() {
                     @Override
