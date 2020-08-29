@@ -15,7 +15,8 @@ public class MainActivity extends AppCompatActivity implements NavigationHost {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.app_bar_main);
+        setSupportActionBar(findViewById(R.id.app_bar));
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         if (savedInstanceState == null) {
             getSupportFragmentManager()
@@ -44,5 +45,10 @@ public class MainActivity extends AppCompatActivity implements NavigationHost {
         }
 
         transaction.commit();
+    }
+
+    @Override
+    public void goBack() {
+        getSupportFragmentManager().popBackStack();
     }
 }

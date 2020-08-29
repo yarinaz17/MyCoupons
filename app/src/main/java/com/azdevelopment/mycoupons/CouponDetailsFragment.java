@@ -1,6 +1,7 @@
 package com.azdevelopment.mycoupons;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,12 +15,14 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.azdevelopment.mycoupons.data.Coupon;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.ceylonlabs.imageviewpopup.ImagePopup;
 
 
 public class CouponDetailsFragment extends Fragment {
@@ -42,8 +45,17 @@ public class CouponDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_coupon_details, container, false);
-        setUpToolbar(view);
+        //setUpToolbar(view);
 
+
+        Button btn = view.findViewById(R.id.details_cpn_backBtn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity) getActivity();
+                ((NavigationHost)activity).goBack();
+            }
+        });
         ImageView couponImg = view.findViewById(R.id.details_cpn_image);
         TextView firm,description,disclaimer;
         firm = view.findViewById(R.id.details_cpn_firm);
@@ -58,6 +70,17 @@ public class CouponDetailsFragment extends Fragment {
                         load(coupon.getUrl()).
                         diskCacheStrategy(DiskCacheStrategy.DATA).
                         into(couponImg);
+                ImagePopup imagePopup = new ImagePopup(view.getContext());
+                imagePopup.setBackgroundColor(Color.TRANSPARENT);
+                imagePopup.setHideCloseIcon(true);
+                imagePopup.setImageOnClickClose(true);
+                imagePopup.initiatePopupWithGlide(coupon.getUrl());
+                couponImg.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        imagePopup.viewPopup();
+                    }
+                });
                 firm.setText(coupon.getFirm());
                 description.setText(coupon.getLong_description());
                 disclaimer.setText(coupon.getDisclaimer());
@@ -87,12 +110,12 @@ public class CouponDetailsFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
     }
-
-    private void setUpToolbar(View view) {
-        Toolbar toolbar = view.findViewById(R.id.app_bar);
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        if (activity != null) {
-            activity.setSupportActionBar(toolbar);
-        }
-    }
+//
+//    private void setUpToolbar(View view) {
+//        Toolbar toolbar = view.findViewById(R.id.app_bar);
+//        AppCompatActivity activity = (AppCompatActivity) getActivity();
+//        if (activity != null) {
+//            activity.setSupportActionBar(toolbar);
+//        }
+//    }
 }

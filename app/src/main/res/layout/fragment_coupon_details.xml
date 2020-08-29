@@ -7,25 +7,25 @@
     tools:context=".MainListFragment">
 
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/app_bar"
-            style="@style/Widget.MyCoupons.Toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="@string/cpn_app_name" />
-    </com.google.android.material.appbar.AppBarLayout>
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/app_bar"-->
+<!--            style="@style/Widget.MyCoupons.Toolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            app:title="@string/cpn_app_name" />-->
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="56dp"
         android:background="@color/secondaryLightColor"
-        android:elevation="2dp"
-        android:paddingStart="@dimen/cpn_product_grid_spacing"
-        android:paddingEnd="@dimen/cpn_product_grid_spacing"
+        android:padding="8dp"
+        android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
@@ -33,24 +33,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@android:color/white"
+            android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            app:cardElevation="4dp">
+            app:cardPreventCornerOverlap="true"
+            app:cardElevation="2dp"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <ImageView
-                    android:id="@+id/coupon_image"
+                    android:id="@+id/details_cpn_image"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:scaleType="fitCenter"/>
                 <TextView
-                    android:id="@+id/coupon_firm"
+                    android:id="@+id/details_cpn_firm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textDirection="rtl"
                     android:textAppearance="?attr/textAppearanceHeadline5"
                     android:fontFamily="@font/open_sans_bold"
                     android:textColor="@android:color/black"
@@ -61,7 +66,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textDirection="rtl"
                     android:textAppearance="?attr/textAppearanceSubtitle1"
                     android:fontFamily="@font/open_sans_regular"
                     android:textColor="@android:color/black"
@@ -72,7 +79,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:layout_gravity="right"
+                    android:layout_gravity="center"
+                    android:textDirection="rtl"
                     android:textAppearance="?attr/textAppearanceOverline"
                     android:fontFamily="@font/open_sans_light"
                     android:textColor="@android:color/black"
@@ -80,12 +88,14 @@
                     tools:ignore="RtlHardcoded" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/details_cpn_backBtn"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MyCoupons.Button"
                     android:text="@string/str_back"
                     android:layout_marginTop="48dp"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="24dp"/>
 
             </LinearLayout>
 

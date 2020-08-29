@@ -54,7 +54,7 @@ public class MainListFragment extends Fragment implements OnCouponClickListener 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_main_list, container, false);
-        setUpToolbar(view);
+        //setUpToolbar(view);
 
 //        Coupon cpn = new Coupon("https://static.wixstatic.com/media/1c768d_bd93258087f748588d7c5a64f47b65ee.jpg","Tnuva","20% OFF all our products");
 //        Coupon cpn2 = new Coupon("https://s3.eu-central-1.amazonaws.com/prod-prog-site-s3/data/attachments/331/331445-281b216fcb217907dd2bf15dbb504b3b.jpg","Tara","10% OFF milk");
@@ -84,8 +84,8 @@ public class MainListFragment extends Fragment implements OnCouponClickListener 
     }
 
     private void setUpToolbar(View view) {
-        Toolbar toolbar = view.findViewById(R.id.app_bar);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
+        Toolbar toolbar = activity.findViewById(R.id.app_bar);
         if (activity != null) {
             activity.setSupportActionBar(toolbar);
         }

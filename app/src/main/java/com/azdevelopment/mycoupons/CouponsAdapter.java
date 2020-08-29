@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.azdevelopment.mycoupons.data.Coupon;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.ceylonlabs.imageviewpopup.ImagePopup;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
@@ -72,8 +73,8 @@ public class CouponsAdapter extends RecyclerView.Adapter<CouponsAdapter.CouponVi
             mCouponItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AppCompatActivity activity = (AppCompatActivity) v.getContext();
                     onCouponClickListener.onCouponClick(cpn);
+                    AppCompatActivity activity = (AppCompatActivity) v.getContext();
                     ((NavigationHost)activity).navigateTo(new CouponDetailsFragment(),true);
                 }
             });
